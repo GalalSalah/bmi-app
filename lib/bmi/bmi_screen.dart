@@ -1,31 +1,21 @@
-import 'dart:math';
-
 import 'package:first_project/bmi_result/bmi_result.dart';
 import 'package:first_project/cubit/cubit.dart';
 import 'package:first_project/cubit/states.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BmiScreen extends StatefulWidget {
-  @override
-  _BmiScreenState createState() => _BmiScreenState();
-}
 
-class _BmiScreenState extends State<BmiScreen> {
-  // bool isMale = true;
-
-
-
+class BmiScreen extends StatelessWidget {
+  const BmiScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>BmiCubit(),
-      child: BlocConsumer<BmiCubit,BmiStates>(
-        listener: (context,state){},
-        builder: (context,state){
-          var bmiCubit=BmiCubit.get(context);
+      create: (BuildContext context) => BmiCubit(),
+      child: BlocConsumer<BmiCubit, BmiStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var bmiCubit = BmiCubit.get(context);
           return Scaffold(
             appBar: AppBar(
               title: const Text('BMI'),
@@ -40,7 +30,7 @@ class _BmiScreenState extends State<BmiScreen> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                               bmiCubit.changeGender();
+                                bmiCubit.changeGender();
                               },
                               child: Container(
                                 child: Column(
@@ -60,13 +50,16 @@ class _BmiScreenState extends State<BmiScreen> {
                                     Text(
                                       'Male',
                                       style: TextStyle(
-                                          fontSize: 25, fontWeight: FontWeight.bold),
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: bmiCubit.isMale ? Colors.blue : Colors.grey[400]),
+                                    color: bmiCubit.isMale
+                                        ? Colors.blue
+                                        : Colors.grey[400]),
                               ),
                             ),
                           ),
@@ -99,13 +92,16 @@ class _BmiScreenState extends State<BmiScreen> {
                                     Text(
                                       'Female',
                                       style: TextStyle(
-                                          fontSize: 25, fontWeight: FontWeight.bold),
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: bmiCubit.isMale ? Colors.grey[400] : Colors.blue),
+                                    color: bmiCubit.isMale
+                                        ? Colors.grey[400]
+                                        : Colors.blue),
                               ),
                             ),
                           ),
@@ -124,7 +120,8 @@ class _BmiScreenState extends State<BmiScreen> {
                           children: [
                             Text(
                               'Height',
-                              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -282,8 +279,8 @@ class _BmiScreenState extends State<BmiScreen> {
             ),
           );
         },
-
       ),
     );
   }
 }
+
